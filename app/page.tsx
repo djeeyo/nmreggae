@@ -78,38 +78,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
-      {/* Header */}
-      <motion.header 
-        className="text-center py-12 px-4"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            className="flex items-center justify-center gap-3 mb-4"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Music className="w-8 h-8 text-yellow-400" />
-            <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 tracking-tight">
-              New Mexico Reggae Calendar
-            </h1>
-            <Music className="w-8 h-8 text-yellow-400" />
-          </motion.div>
-          <motion.p 
-            className="text-lg md:text-xl text-yellow-200 font-light"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Your guide to the hottest reggae vibes across the Land of Enchantment
-          </motion.p>
-        </div>
-      </motion.header>
-
-      {/* Month Navigation */}
+ 
 {/* Header */}
 <motion.div
   className="text-center py-12 px-4"
