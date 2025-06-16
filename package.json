@@ -13,10 +13,10 @@
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
-    "tailwindcss": "^3.4.1",
     "typescript": "5.8.3"
   },
   "dependencies": {
+    "tailwindcss": "^3.4.1",
     "@auth/prisma-adapter": "2.9.0",
     "@floating-ui/react": "0.26.0",
     "@headlessui/react": "1.7.18",
