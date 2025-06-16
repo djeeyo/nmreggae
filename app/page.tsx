@@ -79,7 +79,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
  
-  
+{/* Header */}  
 <motion.div
   className="text-center py-12 px-4"
   initial={{ opacity: 0, y: -50 }}
