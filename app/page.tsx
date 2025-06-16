@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock, ExternalLink, ChevronLeft, ChevronRight, Music } from 'lucide-react';
 import reggaeEventsData from '../data/reggae-events.json';
 
