@@ -1,0 +1,39 @@
+
+{
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "installCommand": "yarn install",
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "ADMIN_PASSWORD": "@admin_password"
+  },
+  "build": {
+    "env": {
+      "DATABASE_URL": "@database_url",
+      "ADMIN_PASSWORD": "@admin_password"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "/admin"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
