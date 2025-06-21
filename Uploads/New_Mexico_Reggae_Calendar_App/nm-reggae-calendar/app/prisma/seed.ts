@@ -4,6 +4,14 @@ import reggaeEventsData from '../data/reggae-events.json'
 
 const prisma = new PrismaClient()
 
+// Type definition for the eventsByCity groupBy result
+interface EventsByCity {
+  city: string;
+  _count: {
+    city: number;
+  };
+}
+
 async function main() {
   console.log('Starting database seed...')
 
@@ -54,7 +62,7 @@ async function main() {
   })
   
   console.log('📍 Events by city:')
-  eventsByCity.forEach(({ city, _count }) => {
+  eventsByCity.forEach(({ city, _count }: EventsByCity) => {
     console.log(`  ${city}: ${_count.city} events`)
   })
 }
