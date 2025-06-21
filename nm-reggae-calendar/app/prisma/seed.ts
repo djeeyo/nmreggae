@@ -54,7 +54,7 @@ async function main() {
   })
   
   console.log('📍 Events by city:')
-  eventsByCity.forEach(({ city, _count }) => {
+  eventsByCity.forEach(({ city, _count }: any) => {
     console.log(`  ${city}: ${_count.city} events`)
   })
 }
