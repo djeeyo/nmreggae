@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
 
     // Format as CSV
     const csvHeader = 'date,original_date,day_of_week,venue,event_name,type,tickets_url,city,state,country\n'
-    const csvData = events.map(event => {
+    const csvData = events.map((event: any) => {
       const formattedDate = event.date.toISOString().split('T')[0] // YYYY-MM-DD
       return [
         formattedDate,

@@ -9,6 +9,23 @@ const prisma = new PrismaClient()
 // Simple password authentication
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'nmreggae2025'
 
+// Define the Event type based on Prisma model
+type Event = {
+  id: string;
+  date: Date;
+  original_date: string | null;
+  day_of_week: string;
+  venue: string;
+  event_name: string;
+  type: string;
+  tickets_url: string | null;
+  city: string;
+  state: string;
+  country: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
@@ -31,7 +48,7 @@ export async function GET(request: NextRequest) {
 
     // Format as CSV
     const csvHeader = 'date,original_date,day_of_week,venue,event_name,type,tickets_url,city,state,country\n'
-    const csvData = events.map(event => {
+    const csvData = events.map((event: Event) => {
       const formattedDate = event.date.toISOString().split('T')[0] // YYYY-MM-DD
       return [
         formattedDate,
@@ -63,3 +80,4 @@ export async function GET(request: NextRequest) {
     )
   }
 }
+
