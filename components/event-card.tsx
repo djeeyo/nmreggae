@@ -25,12 +25,32 @@ interface EventCardProps {
 
 export default function EventCard({ event, cityName, index, onClick }: EventCardProps) {
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric'
-    });
+    // Handle both ISO date strings and simple date strings
+    // Extract just the date part if it's an ISO string
+    const dateOnly = dateString.includes('T') ? dateString.split('T')[0] : dateString;
+    
+    // Parse the date string manually to ensure consistent behavior
+    // Format: "2025-07-15" -> [2025, 07, 15]
+    const [year, month, day] = dateOnly.split('-').map(Number);
+    
+    // Validate the parsed values
+    if (!year || !month || !day || isNaN(year) || isNaN(month) || isNaN(day)) {
+      console.error('Invalid date string:', dateString);
+      return 'Invalid Date';
+    }
+    
+    // Create date object with explicit UTC to avoid timezone issues
+    const date = new Date(year, month - 1, day);
+    
+    // Use consistent formatting that works the same on server and client
+    const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    const weekday = weekdays[date.getDay()];
+    const monthName = months[date.getMonth()];
+    const dayNum = date.getDate();
+    
+    return `${weekday}, ${monthName} ${dayNum}`;
   };
 
   const getCityColorClass = (cityName: string) => {
@@ -52,7 +72,7 @@ export default function EventCard({ event, cityName, index, onClick }: EventCard
           <div className="flex items-center gap-3 mb-2">
             <Calendar className="w-5 h-5 text-yellow-400" />
             <span className="text-yellow-400 font-semibold">
-              {formatDate(event.date)} • {event.day_of_week}
+              {formatDate(event.date)}
             </span>
           </div>
           
