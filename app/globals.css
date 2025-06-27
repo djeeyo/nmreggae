@@ -3,8 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
+/* now your custom class */
+.btn-emerald {
+  @apply border-emerald-400 border;   /* ← this will work here */
+}
 :root {
   --foreground-rgb: 255, 215, 0;
   --background-start-rgb: 25, 42, 86;
